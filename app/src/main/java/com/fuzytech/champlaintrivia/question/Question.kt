@@ -1,4 +1,4 @@
-package com.fuzytech.champlaintrivia
+package com.fuzytech.champlaintrivia.question
 
 interface Question<A> {
 
