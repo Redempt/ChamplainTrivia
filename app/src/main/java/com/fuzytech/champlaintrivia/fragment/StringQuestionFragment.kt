@@ -38,9 +38,9 @@ class StringQuestionFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentStringQuestionBinding.inflate(inflater, container, false)
-        binding.apply {
-            buttons = listOf(answer1, answer2, answer3, answer4)
-        }
+        binding.apply { buttons = listOf(answer1, answer2, answer3, answer4) }
+        (0..4).forEach { buttons[it].setText(answers[it]) }
+        binding.question.setText(question)
         return binding.root
     }
 
