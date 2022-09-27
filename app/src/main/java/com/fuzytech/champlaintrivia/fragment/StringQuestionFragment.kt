@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.fuzytech.champlaintrivia.R
+import com.fuzytech.champlaintrivia.databinding.FragmentStringQuestionBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -16,6 +18,10 @@ class StringQuestionFragment : Fragment() {
     private lateinit var question: String
     private lateinit var answers: List<String>
     private var answer: Int? = null
+
+    private lateinit var buttons: List<Button>
+
+    private lateinit var binding: FragmentStringQuestionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +37,11 @@ class StringQuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_string_question, container, false)
+        binding = FragmentStringQuestionBinding.inflate(inflater, container, false)
+        binding.apply {
+            buttons = listOf(answer1, answer2, answer3, answer4)
+        }
+        return binding.root
     }
 
     companion object {
