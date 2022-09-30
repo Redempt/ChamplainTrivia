@@ -37,4 +37,10 @@
         android:layout_height="wrap_content"
         android:text="TextView" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.fuzytech.champlaintrivia.fragment.StringQuestionFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
