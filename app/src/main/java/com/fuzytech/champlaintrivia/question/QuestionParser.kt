@@ -6,17 +6,25 @@ import java.lang.IllegalArgumentException
 
 object QuestionParser {
 
+    private inline fun <reified T> toList(array: JSONArray): ArrayList<T> {
+        val list = ArrayList<T>()
+        for (i in 0 until array.length()) {
+            list.add(array[i] as T)
+        }
+        return list
+    }
+
     fun parse(input: String): List<Question<*>> {
         val list = JSONArray(input)
         val out = mutableListOf<Question<*>>()
-        for (i in 0..list.length()) {
+        for (i in 0 until list.length()) {
             val entry = list[i] as JSONObject
             val type = entry["type"] as String
             val question = entry["question"] as String
             out.add(when (type) {
-                "string" -> MultipleChoiceQuestion(question, entry["answers"] as List<String>, entry["answer"] as Int)
+                "string" -> MultipleChoiceQuestion(question, toList<String>(entry.getJSONArray("answers")), entry["answer"] as Int)
                 "openresponse" -> OpenResponseQuestion(question, entry["answer"] as String)
-                "image" -> MultipleChoiceQuestion(question, entry["answers"] as List<Int>, entry["answer"] as Int)
+                "image" -> MultipleChoiceQuestion(question, toList<Int>(entry.getJSONArray("answers")), entry["answer"] as Int)
                 else -> throw IllegalArgumentException("Invalid question type")
             })
         }
