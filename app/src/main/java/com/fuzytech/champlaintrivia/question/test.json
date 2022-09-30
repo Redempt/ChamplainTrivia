@@ -1,0 +1,19 @@
+[
+  {
+    "type": "string",
+    "question": "Can you answer this question?",
+    "answers": ["First answer", "Second answer", "Third answer", "Fourth answer"],
+    "answer": 0
+  },
+  {
+    "type": "image",
+    "question": "Which of these is a hot dog?",
+    "answers": [1, 2, 3, 4],
+    "answer": 2
+  },
+  {
+    "type": "openresponse",
+    "question": "What is the capital of Massachusetts?",
+    "answer": "Boston"
+  }
+]
